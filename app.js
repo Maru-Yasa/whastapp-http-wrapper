@@ -1,17 +1,20 @@
 const express = require('express')
 const { PORT } = require('./config')
 const router = require('./routes')
-const { messageHook } = require('./hooks')
 const bodyParser = require('body-parser')
+const { hooks } = require('./hooks')
+const { consola } = require('consola')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// main api endpoint
 app.use('/api/v1', router)
 
-messageHook()
+// initialize app hooks
+hooks()
 
 app.listen(PORT,() => {
-    console.log(`Server running on port ${PORT}`);    
+    consola.box(`Server running on port ${PORT}`)
 })

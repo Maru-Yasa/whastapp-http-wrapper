@@ -1,7 +1,6 @@
 const express = require('express')
 const { Client } = require('../utils/client')
-const qrGenerator = require('../utils/QR')
-
+const qrGenerator = require('qr-image')
 const router = express.Router()
 const client = Client
 

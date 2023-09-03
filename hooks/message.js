@@ -9,6 +9,7 @@ function messageHook() {
             const _response = await axios.post(WEB_HOOK, {
                 body: _message
             })
+            consola.info(_response)
             consola.info(`webhook sended with [${_response.status}] code`)
         } catch (error) {
             if (error instanceof AxiosError) {                
