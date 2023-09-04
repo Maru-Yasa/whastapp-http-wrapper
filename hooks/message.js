@@ -11,10 +11,10 @@ function messageHook() {
         const mediaDownload = await _message.downloadMedia();
         _message = { ..._message, media: mediaDownload };
       }
-      const _response = await axios.post('http://localhost:5000/hooks', {
+      const _response = await axios.post(WEB_HOOK, {
         body: _message,
       });
-      consola.info(`webhook sended with [${_response.status}] code`);
+      consola.success(`webhook sended with [${_response.status}] code`);
     } catch (error) {
       if (error instanceof AxiosError) {
         consola.error(`webhook sended with error [${error.code}] code`);
