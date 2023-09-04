@@ -9,9 +9,9 @@ function messageHook() {
       if (_message.hasMedia) {
         consola.info(`webhook sended with media`);
         const mediaDownload = await _message.downloadMedia();
-        _message = { ..._message, ...mediaDownload };
+        _message = { ..._message, media: mediaDownload };
       }
-      const _response = await axios.post(WEB_HOOK, {
+      const _response = await axios.post('http://localhost:5000/hooks', {
         body: _message,
       });
       consola.info(`webhook sended with [${_response.status}] code`);
