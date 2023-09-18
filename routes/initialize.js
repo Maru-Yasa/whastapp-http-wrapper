@@ -9,16 +9,16 @@ router.get(
     '/',
     async (req, res) => {
         try {
-            await Client.logout()
+            Client.initialize()
             return res.json({
                         status: 'success',
-                        message: 'Success logout',
+                        message: 'Success initializing',
                         data: {}
                     })
         }catch (error) {
             return res.json({
                 status: 'error',
-                message: 'error while logout',
+                message: 'error while initializing',
                 data: {error}
             })
         }

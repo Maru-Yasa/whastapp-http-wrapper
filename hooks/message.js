@@ -2,7 +2,6 @@ const { consola } = require("consola");
 const { WEB_HOOK } = require("../config");
 const { Client } = require("../utils/client");
 const { default: axios, AxiosError } = require("axios");
-
 function messageHook() {
   Client.on("message", async (_message) => {
     try {
