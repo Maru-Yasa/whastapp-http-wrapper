@@ -10,6 +10,7 @@ router.post(
     (req, res) => {
         try {            
             const clientId = `${req.body.to}@c.us`
+            console.log(clientId)
             Client.sendMessage(clientId, req.body.message)
             return res.json({
                 status: 'success',
