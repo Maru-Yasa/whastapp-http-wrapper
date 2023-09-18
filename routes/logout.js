@@ -3,25 +3,33 @@ const router = express.Router()
 const { body } = require('express-validator')
 const { Client } = require('../utils/client')
 const { consola } = require('consola')
+const fs  = require('fs')
 
 router.post(
     '/',
-    body('to').notEmpty(),
-    body('message').notEmpty(),
     (req, res) => {
-        consola.info('Message send request')
+        consola.success('Logout successfuly')
         try {            
-            const clientId = `${req.body.to}@c.us`
-            Client.sendMessage(clientId, req.body.message)
+
+            if (fs.existsSync('../.wwebjs_auth')) {
+                fs.unlinkSync('../.wwebjs_auth')
+            } else {
+                return res.json({
+                    status: 'error',
+                    message: 'error while logout',
+                    data: {}
+                })
+            }
+
             return res.json({
                 status: 'success',
-                message: 'Success sending message',
+                message: 'Success logout',
                 data: {}
             })
         } catch (error) {
             return res.json({
                 status: 'error',
-                message: 'error sending message',
+                message: 'error while logout',
                 data: {error}
             })
         }
