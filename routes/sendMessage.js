@@ -8,11 +8,11 @@ router.post(
     '/',
     body('to').notEmpty(),
     body('message').notEmpty(),
-    (req, res) => {
+    async (req, res) => {
         consola.info('Message send request')
         try {            
             const clientId = `${req.body.to}@c.us`
-            Client.sendMessage(clientId, req.body.message)
+            await Client.sendMessage(clientId, req.body.message)
             return res.json({
                 status: 'success',
                 message: 'Success sending message',
