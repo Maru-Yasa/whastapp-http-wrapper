@@ -4,7 +4,6 @@ const router = require('./routes')
 const bodyParser = require('body-parser')
 const { hooks } = require('./hooks')
 const { consola } = require('consola')
-const getToken = require('./utils/token')
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
