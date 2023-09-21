@@ -6,6 +6,7 @@ const zustand = require('zustand/vanilla')
 const store = zustand.createStore((set) => ({
     status: 'OFFLINE',
     setOffline: () => set({ status: 'OFFLINE' }),
+    setQr: () => set({ status: 'QR' }),
     setStarting: () => set({ status: 'STARTING'}),
     setOnline: () => set({ status: 'ONLINE' })
 }))

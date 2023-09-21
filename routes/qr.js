@@ -3,11 +3,13 @@ const { Client } = require('../utils/client')
 const qrGenerator = require('qr-image')
 const router = express.Router()
 const client = Client
+const store = require('../utils/store')
 
 let qr = null
 
 client.on('qr', (_qr) => {
-    console.log('QR 2RECEIVED', _qr);
+    console.log('QR RECEIVED', _qr);
+    store.getState().setQr()
     qr = _qr
 })
 
