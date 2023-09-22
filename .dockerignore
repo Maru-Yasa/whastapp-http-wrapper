@@ -1,0 +1,5 @@
+node_modules
+.gitignore
+.wwebjs_*
+README.md
+.env.example
