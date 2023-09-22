@@ -4,6 +4,9 @@ const store = require('../utils/store')
 
 const client = new Client({
     authStrategy: new LocalAuth(),
+    puppeteer: {
+        args: ['--no-sandbox']
+    }
 })
 
 client.initialize()
